@@ -2,9 +2,14 @@
 <html>
     <head>
         <meta charset="UTF-8">
-        <title>Emojifyer Test</title>
+        <title>Emojifyer</title>
 
         <style>
+            body {
+                background-color: #444;
+                color: #ddd;
+            }
+
             .emojify-body {
                 width: 50%;
                 margin: auto;
@@ -12,23 +17,42 @@
             }
 
             .emojify-body textarea {
-                width: 500px;
-                height: 100px;
+                width: 700px;
+                height: 300px;
+                resize: none;
+                border: 2px solid #000;
+                background-color: #555;
+                color: #ddd;
+                padding: 5px;
+                font-size: 1.5em;
             }
 
             .emojify-section {
                 margin: 20px;
             }
+
+            .emojify-button {
+                width: 100px;
+                height: 50px;
+                border: 2px solid #000;
+                background-color: #555;
+                color: #ddd;
+            }
         </style>
 
         <script src="emojifyer.js"></script>
         <script>
+            const defaultString = "The quick brown fox jumped over the lazy dogs";
+
             const emojifyInput = () => {
-                const input = document.getElementById("emojify-input").innerHTML;
-                document.getElementById("emojify-output").innerText = emojifyString(input);
+                const input = document.getElementById("emojify-input").value;
+                console.log("Emojifying:", input);
+                document.getElementById("emojify-output").value = `${emojifyString(input)}`;
             };
 
             window.onload = () => {
+                document.getElementById("emojify-input").value = defaultString;
+                document.getElementById("emojify-output").value = "";
                 emojifyInput();
             };
         </script>
@@ -39,18 +63,18 @@
             <div class="emojify-section">
                 Input:
                 <div>
-                    <textarea id="emojify-input">The quick brown fox jumped over the lazy dogs</textarea>
+                    <textarea id="emojify-input"></textarea>
                 </div>
             </div>
 
             <div class="emojify-section">
-                <input type="button" value="Emojify" onclick="emojifyInput();" />
+                <input type="button" class="emojify-button" value="Emojify" onclick="emojifyInput();" />
             </div>
 
             <div class="emojify-section">
                 Output:
                 <div>
-                    <textarea id="emojify-output"></textarea>
+                    <textarea id="emojify-output" readonly></textarea>
                 </div>
             </div>
         </div>

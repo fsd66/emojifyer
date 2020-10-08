@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Emojifyer Test</title>
+
+        <style>
+            .emojify-body {
+                width: 50%;
+                margin: auto;
+                text-align: center;
+            }
+
+            .emojify-body textarea {
+                width: 500px;
+                height: 100px;
+            }
+
+            .emojify-section {
+                margin: 20px;
+            }
+        </style>
+
+        <script src="emojifyer.js"></script>
+        <script>
+            const emojifyInput = () => {
+                const input = document.getElementById("emojify-input").innerHTML;
+                document.getElementById("emojify-output").innerText = emojifyString(input);
+            };
+
+            window.onload = () => {
+                emojifyInput();
+            };
+        </script>
+    </head>
+
+    <body>
+        <div class="emojify-body">
+            <div class="emojify-section">
+                Input:
+                <div>
+                    <textarea id="emojify-input">The quick brown fox jumped over the lazy dogs</textarea>
+                </div>
+            </div>
+
+            <div class="emojify-section">
+                <input type="button" value="Emojify" onclick="emojifyInput();" />
+            </div>
+
+            <div class="emojify-section">
+                Output:
+                <div>
+                    <textarea id="emojify-output"></textarea>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
